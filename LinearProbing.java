@@ -28,6 +28,12 @@ public class LinearProbing<Key, Value> {
         m       = t.m;
     }
 
+    private Boolean contains(Key key) {
+        for (int i = hash(key); keys[i] != null; i = (i+1) % m)
+            if (keys[i].equals(key)) return true;
+        return false;
+    }
+
     public void put(Key key, Value value) {
         if (n >= m/2) resize(2*m);
         int i;
@@ -43,5 +49,27 @@ public class LinearProbing<Key, Value> {
             if (keys[i].equals(key))
                 return values[i];
         return null;
+    }
+
+    public void delete(Key key) {
+        if (!contains(key)) return;
+        int i = hash(key);
+        while (!key.equals(keys[i]))
+            i = (i + 1) % m;
+        keys[i]     = null;
+        values[i]   = null;
+        i = (i + 1) % m;
+        while (keys[i] != null) {
+            Key     keyToRedo   = keys[i];
+            Value   valueToRedo = values[i];
+            keys[i]     = null;
+            values[i]   = null;
+            n--;
+            put(keyToRedo, valueToRedo);
+            i = (i + 1) % m;
+        }
+        n--;
+        if (n > 0 && n <= m/8)
+            resize(m/2);
     }
 }

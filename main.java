@@ -7,6 +7,7 @@ class main {
         Integer[] values = {5, 1, 6, 3, 7, 2, 8, 2, 8, 10};
         for (int i = 0; i < keys.length; ++i)
             LP.put(keys[i], values[i]);
+        LP.delete("dolor");
         for(int i = 0; i < keys.length; ++i)
             System.out.println(LP.get(keys[i]));
     }
