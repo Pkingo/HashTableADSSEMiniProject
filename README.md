@@ -11,3 +11,6 @@ Hash Table exercise with separate chaining and linear probing for the ADSSE mini
 ## Includes
 1. Seprate Chaining Hash Table class
 2. Linear Probing Hash Table Class
+
+## LINKS
+1. [Latex Document](https://www.overleaf.com/16678232zbgkwwnnkfsg)
