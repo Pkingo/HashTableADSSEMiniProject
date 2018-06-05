@@ -26,4 +26,16 @@ public class SequentialSearchST<Key, Value> {
             }
         first = new Node(key, value, first);
     }
+
+    public void delete(Key key) {
+        Node prevNode = first;
+        for (Node x = first; x != null; x = x.next) {
+            if (key.equals(x.key)) {
+                if (prevNode == first) first = x;
+                else prevNode.next = x.next;
+                return;
+            }
+            prevNode = x;
+        }
+    }
 }
