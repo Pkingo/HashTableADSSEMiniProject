@@ -5,7 +5,7 @@ public class LinearProbing<Key, Value> {
     private Value[] values;
 
     public LinearProbing() {
-        this(16);
+        this(17);
     }
 
     public LinearProbing(int m) {
